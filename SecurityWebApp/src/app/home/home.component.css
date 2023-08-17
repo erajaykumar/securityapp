@@ -1,0 +1,31 @@
+.carousel-item img {
+  width: 90%;
+  height: 40%;
+  max-height: 650px;
+  max-width: 1300px;
+  opacity: 0.8;
+}
+
+.carousel-caption {
+  background-color: gray;
+  color: black;
+  opacity: 0.8;
+  border-radius: 10px;
+}
+.carousel-caption h5,
+.carousel-caption p {
+  font-weight: bold;
+  color: black;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  min-height: 460px;
+}
+.card-title {
+  font-weight: bold;
+}
