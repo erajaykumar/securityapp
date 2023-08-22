@@ -1,15 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using log4net;
+using log4net.Config;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Reflection;
 
 namespace Rule.Create.Service.Controllers
 {
     public class RuleDbController : Controller
     {
 
-             private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
         private readonly IDataAccessProvider _dataAccessProvider;
+
+        
 
         public RuleDbController(IDataAccessProvider dataAccessProvider, IWebHostEnvironment hostingEnvironment)
         {
@@ -61,6 +66,7 @@ namespace Rule.Create.Service.Controllers
             if (ModelState.IsValid)
             {
                 _dataAccessProvider.CreateRules(rules);
+                LogMethod().Info("rule save in db");
                 
             }
             return Ok();
@@ -101,11 +107,19 @@ namespace Rule.Create.Service.Controllers
             try
             {
                 return RedirectToAction(nameof(Index));
+                
             }
             catch
             {
                 return View();
             }
+        }
+        public static Logger LogMethod()
+        {
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4netconfig.config"));
+            var demo = new Logger();
+            return demo;
         }
     }
 }
