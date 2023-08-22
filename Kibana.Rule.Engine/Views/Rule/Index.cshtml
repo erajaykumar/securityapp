@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Rules>
+
+@{
+    ViewData["Title"] = "RULE PAGE";
+}
+
+<h4>@ViewData["Title"]</h4>
+</br>
+<div class="container">
+    <div class="row">
+        <div class="col-50">
+            <p style="float: left">
+                <a asp-action="Create" class="btn btn-success">Create Rule</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RuleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RuleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RuleType)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RuleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>item.RuleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>item.RuleType)
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

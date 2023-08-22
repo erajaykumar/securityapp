@@ -1,0 +1,67 @@
+﻿@model EventModel
+
+@{
+    ViewData["Title"] = "Delete Log from Elastic Search";
+}
+
+<h4>Delete Logs</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FaultId" class="control-label"></label>
+                <input asp-for="FaultId" class="form-control" />
+                <span asp-validation-for="FaultId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FaultCode" class="control-label"></label>
+                <input asp-for="FaultCode" class="form-control" />
+                <span asp-validation-for="FaultCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FaultType" class="control-label"></label>
+                <input asp-for="FaultType" class="form-control" />
+                <span asp-validation-for="FaultType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DisplayText" class="control-label"></label>
+                <input asp-for="DisplayText" class="form-control" />
+                <span asp-validation-for="DisplayText" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Fault" class="control-label"></label>
+                <input asp-for="Fault" class="form-control" />
+                <span asp-validation-for="Fault" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Severity" class="control-label"></label>
+                <input asp-for="Severity" class="form-control" />
+                <span asp-validation-for="Severity" class="text-danger"></span>
+            </div>
+
+            &nbsp;
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-success" onclick="javascript:alert('Deleted successfully');" />
+                &nbsp;or&nbsp;
+                <input type="submit" value="Cancel" class="btn btn-danger" asp-controller="Elastic" asp-action="Index" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

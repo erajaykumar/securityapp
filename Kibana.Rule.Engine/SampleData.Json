@@ -1,0 +1,41 @@
+[
+  {
+    "FaultId": 1,
+    "FaultCode": 1,
+    "FaultType": "Power Up",
+    "DisplayText": "Major error - Power-up Fault: Power lost and restored in RUN mode.",
+    "Fault": "The controller that is powered on is in Run mode.",
+    "Severity": "Major",
+    "@timestamp": "2023-07-11T01:05:39.8287334Z"
+
+  },
+  {
+    "FaultId": 1,
+    "FaultCode": 2,
+    "FaultType": "Power Up",
+    "DisplayText": "Minor warning Fault F01 - Power-up Fault: power loss detected. Chassis active until DC power cannot be maintained.",
+    "Fault": "AC power loss detected. Chassis active until DC power cannot be maintained.",
+    "Severity": "Minor",
+    "@timestamp": "2023-07-11T01:01:39.8287334Z"
+  },
+  {
+    "FaultId": 1,
+    "FaultCode": 15,
+    "FaultType": "Recoverable",
+    "DisplayText": "Warning occured in a routine of the safety task.",
+    "Fault": "Correct the warning in the user-program logic.",
+    "Severity": "Minor",
+    "@timestamp": "2023-07-11T01:02:39.8287334Z"
+  },
+  {
+    "FaultId": 1,
+    "FaultCode": 16,
+    "FaultType": "I/O",
+    "DisplayText": "Connection failure error",
+    "Fault": "I/O communication configuration fault detected. ",
+    "Severity": "Major",
+    "@timestamp": "2023-07-11T01:00:39.8287334Z"
+
+
+  }
+]
