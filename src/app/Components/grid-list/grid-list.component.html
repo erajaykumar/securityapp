@@ -1,0 +1,9 @@
+<h3>Current Layout: {{ (cardsLayout | async)?.name }}</h3>
+<div class="grid-list">
+    <mat-grid-list  [cols]="(cardsLayout | async)?.gridColumns"  rowHeight="2:1">
+      <mat-grid-tile>1</mat-grid-tile>
+      <mat-grid-tile>2</mat-grid-tile>
+      <mat-grid-tile>3</mat-grid-tile>
+      <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list> 
+  </div>
