@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/auth-service.component';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -8,19 +11,27 @@ import { AuthService } from './core/auth-service.component';
 })
 export class AppComponent {
   title = 'Security App';
-
+  panelOpenState = false;
   isLoggedIn = false;
 
-  constructor(private _authService: AuthService) {
+  constructor(private _authService: AuthService, private breakpointObserver:BreakpointObserver) {
     this._authService.loginChanged.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+
   }
+
+ 
 
   ngOnInit(): void {
     this._authService.isLoggedIn().then((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+  }
+
+  expandMobileMenu(){
+    console.log('dfdfd');
+    this.panelOpenState = !this.panelOpenState;
   }
 
   login() {

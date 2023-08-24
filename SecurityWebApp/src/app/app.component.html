@@ -25,75 +25,42 @@
   </mat-toolbar>
 </nav> -->
 
-<nav
-  class="navbar navbar-expand-lg navbar-dark bg-dark"
-  aria-label="Ninth navbar example"
->
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"
-      ><i class="bi bi-fingerprint h1 text-align-center"></i> Security App</a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#appNavBar"
-      aria-controls="navbarsExample07XL"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon>fingerprint</mat-icon>
     </button>
-
-    <div
-      class="collapse navbar-collapse"
-      id="appNavBar"
-      style="margin-top: auto; margin-bottom: 4px"
-    >
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            *ngIf="isLoggedIn"
-            routerLink="/insight-dashboard"
-            >Insights</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn" routerLink="/rule">Rules</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn" routerLink="/notification-home"
-            >Notications</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn" routerLink="/advanced-settings"
-            >Advanced Settings</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isAdmin()" routerLink="/admin-home"
-            >Admin</a
-          >
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-          <a class="nav-link pull-right" *ngIf="!isLoggedIn" (click)="login()">
-            Login
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link pull-right" *ngIf="isLoggedIn" (click)="logout()">
-            Logout
-          </a>
-        </li>
-      </ul>
+    <h1>Security App</h1>
+    <span class="menu-spacer"></span>
+    <div class="web-links">
+      <a mat-button routerLink="/insight-dashboard">Insights</a>
+      <a mat-button routerLink="/rule">Rules</a>
+      <a mat-button routerLink="/notification-home">Notications</a>
+      <a mat-button routerLink="/advanced-settings">Advanced Settings</a>
+      <a mat-button routerLink="/admin-home">Admin</a>
+      <a mat-button (click)="login()"> Login </a>
+      <a mat-button (click)="logout()"> Logout </a>
     </div>
-  </div>
-</nav>
+
+    <button mat-icon-button (click)="expandMobileMenu()" class="mobile-menu-collapse" >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row [hidden]="!panelOpenState" class="mobile-menu">
+    <mat-expansion-panel  class="mobile-navigation" hideToggle [expanded]="panelOpenState">
+      <div class="mobile-menu-items">
+        <a mat-button routerLink="/insight-dashboard">Insights</a>
+        <a mat-button routerLink="/rule">Rules</a>
+        <a mat-button routerLink="/notification-home">Notications</a>
+        <a mat-button routerLink="/advanced-settings">Advanced Settings</a>
+        <a mat-button routerLink="/admin-home">Admin</a>
+        <a mat-button (click)="login()"> Login </a>
+        <a mat-button (click)="logout()"> Logout </a>
+      </div>
+    </mat-expansion-panel>
+  </mat-toolbar-row>
+  
+</mat-toolbar>
 <main class="container container-fluid">
   <router-outlet></router-outlet>
 </main>

@@ -22,6 +22,13 @@ import { AgGridModule } from 'ag-grid-angular';
 import { RuleComponent } from './rule/rule.component';
 import { ExistingRuleComponent } from './rule/existing-rule/existing-rule.component';
 import { authGuard } from './core/auth.guard';
+import { RouterModule } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +42,7 @@ import { authGuard } from './core/auth.guard';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -47,6 +55,10 @@ import { authGuard } from './core/auth.guard';
     CoreModule,
     HttpClientModule,
     AgGridModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

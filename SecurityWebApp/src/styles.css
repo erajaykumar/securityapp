@@ -2,3 +2,33 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.menu-spacer{
+    flex: 1 1 auto;
+}
+.mobile-menu-items{
+    margin-top:10px
+}
+.mobile-menu-items a{
+    color: #fff !important;
+    display: block;
+}
+.mobile-menu{
+    height: auto !important;
+}
+
+@media screen and (min-width: 480px) {
+    .mobile-menu-collapse,
+    .mobile-menu{
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .mobile-menu-collapse,
+    .mobile-menu{
+        display: block !important;
+    }
+    .web-links{
+        display: none;
+    }
+}
