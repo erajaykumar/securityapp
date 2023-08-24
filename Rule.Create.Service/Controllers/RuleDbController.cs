@@ -3,6 +3,8 @@ using log4net.Config;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Rule.Create.Service.Models;
+using System;
 using System.Reflection;
 
 namespace Rule.Create.Service.Controllers
@@ -33,8 +35,11 @@ namespace Rule.Create.Service.Controllers
         // GET: RuleDbController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+           var ruleDetail= _dataAccessProvider.GetRule(id);
+            return Ok(ruleDetail);
         }
+
+      
 
         // GET: RuleDbController/Create
         public ActionResult Create()
@@ -47,9 +52,11 @@ namespace Rule.Create.Service.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Rules model)
         {
-           
+            
             var lastRuleId = _dataAccessProvider.GetRules().Select(r => r.RuleId).LastOrDefault();
             int id = lastRuleId + 1;
+            PostData p = new PostData { Id = id, Message = "Created" };
+
             Rules rules = new()
             {
                 RuleId = id,
@@ -67,53 +74,25 @@ namespace Rule.Create.Service.Controllers
             {
                 _dataAccessProvider.CreateRules(rules);
                 LogMethod().Info("rule save in db");
-                
+                using (var client = new HttpClient())
+                {
+
+                    client.BaseAddress = new Uri("https://localhost:708/");
+                    var response = client.PostAsJsonAsync("Producer/send?topic=demo", p).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        LogMethod().Info("Success");
+                    }
+                    else
+                        LogMethod().Error("Success");
+                }
+
             }
-            return Ok();
+             return Ok();
         }
 
-        // GET: RuleDbController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RuleDbController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RuleDbController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RuleDbController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-                
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
+       
         public static Logger LogMethod()
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
