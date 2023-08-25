@@ -24,11 +24,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CORSPolicy");
 app.UseRouting();
 app.UseAuthorization();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHub<NotificationHub>("/notificationHub");
-    endpoints.MapControllers();
-});
+app.MapHub<NotificationHub>("notificationHub");
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
