@@ -15,16 +15,21 @@ namespace SignalR.Service.Controllers
         }
 
 
-        [HttpPost("send/{userId}")]
-        public async Task<IActionResult> SendNotificationToUser(string userId, [FromBody] string message)
+        [HttpPost("{message}")]
+        public void Post(string message)
         {
-            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(message))
-            {
-                return BadRequest("UserId and message cannot be empty.");
-            }
+            _hubContext.Clients.All.SendAsync("publicMessageMethodName", message);
+        }
 
-            await _hubContext.Clients.Group(userId).SendAsync("ReceiveNotification", message);
-            return Ok($"Notification sent to user {userId}.");
+        /// <summary>
+        /// Send message to specific client
+        /// </summary>
+        /// <param name="connectionId"></param>
+        /// <param name="message"></param>
+        [HttpPost("{connectionId}/{message}")]
+        public void Post(string connectionId, string message)
+        {
+            _hubContext.Clients.Client(connectionId).SendAsync("privateMessageMethodName", message);
         }
     }
 }
