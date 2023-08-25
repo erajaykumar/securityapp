@@ -99,81 +99,68 @@
   <div class="col-sm">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4 text-center">
-          Welcome to Security Management App.
+        <h1 class="display-4 text-center mt-3">
+          Welcome to Security Management App
         </h1>
-        <p class="lead">Please click on following link to learn more...</p>
+        <!-- <p class="lead mt-3">Please click on following link to learn more...</p> -->
       </div>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-sm">
-    <div class="card" style="width: 18rem">
-      <img src="../../assets/img/insights.jpg" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">Insights</h5>
-        <p class="card-text">
-          Use security insights to understand the application behavior and
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <mat-card class="same-height-card">
+        <mat-card-header>Insights</mat-card-header>
+        <img mat-card-image src="../../assets/img/insights.jpg"/>
+        <mat-card-content class="mt-2">Use security insights to understand the application behavior and
           security events raised by your organization applications to better
-          understand how the system.
-        </p>
-        <a href="/insight-dashboard" class="btn" style="margin-top: auto"
-          ><i class="bi bi-arrow-right-circle h1 float-end"></i
-        ></a>
-      </div>
+          understand how the system.</mat-card-content>
+          <mat-card-footer class="mat-mdc-card-footer d-flex align-items-end justify-content-end mt-2 mb-3 me-3">
+            <a mat-fab class="md-btn-sm me-3" color="primary" href="/insight-dashboard">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+          </a>
+          </mat-card-footer>
+      </mat-card>
     </div>
-  </div>
-  <div class="col-sm">
-    <div class="card" style="width: 18rem">
-      <img src="../../assets/img/rule.jpg" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">Rule</h5>
-        <p class="card-text">
-          Define your custom rule based on application reported metrics and
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <mat-card class="same-height-card">
+        <mat-card-header>Rules</mat-card-header>
+        <img mat-card-image src="../../assets/img/rule.jpg"/>
+        <mat-card-content class="mt-2">Define your custom rule based on application reported metrics and
           notification settings to get notified when certain security event
           happens with in your organization or define as per your organization's
-          need.
-        </p>
-        <a href="/rule" class="btn" style="margin-top: auto"
-          ><i class="bi bi-arrow-right-circle h1 float-end"></i
-        ></a>
-      </div>
+          need.</mat-card-content>
+          <mat-card-footer class="mat-mdc-card-footer d-flex align-items-end justify-content-end mt-2 mb-3 me-3">
+            <a class="md-btn-sm me-3" mat-fab color="primary" href="/rule">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+          </a>
+          </mat-card-footer>
+      </mat-card>
     </div>
-  </div>
-  <div class="col-sm">
-    <div class="card" style="width: 18rem">
-      <img
-        src="../../assets/img/notification.jpg"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Notification</h5>
-        <p class="card-text">
-          Manage and define notification which will be used by the application
-          when certain security events occurs in your organization.
-        </p>
-        <a href="/notification-home" class="btn" style="margin-top: auto"
-          ><i class="bi bi-arrow-right-circle h1 float-end"></i
-        ></a>
-      </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <mat-card class="same-height-card">
+        <mat-card-header>Notifications</mat-card-header>
+        <img mat-card-image  src="../../assets/img/notification.jpg"/>
+        <mat-card-content class="mt-2"> Manage and define notification which will be used by the application
+          when certain security events occurs in your organization.</mat-card-content>
+          <mat-card-footer class="mat-mdc-card-footer d-flex align-items-end justify-content-end mt-2 mb-3 me-3">
+            <a mat-fab class="md-btn-sm me-3" color="primary" href="/notification-home">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+          </a>
+          </mat-card-footer>
+      </mat-card>
     </div>
-  </div>
-
-  <div class="col-sm">
-    <div class="card" style="width: 18rem">
-      <img src="../../assets/img/settings.jpg" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">Advance Settings</h5>
-        <p class="card-text">
-          Use advanced settings feature to manage settings of the application.
-        </p>
-        <a href="/advanced-settings" class="btn" style="margin-top: auto"
-          ><i class="bi bi-arrow-right-circle h1 float-end"></i
-        ></a>
-      </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <mat-card class="same-height-card">
+        <mat-card-header>Advanced Settings</mat-card-header>
+        <img mat-card-image src="../../assets/img/settings.jpg"/>
+        <mat-card-content class="mt-2"> Use advanced settings feature to manage settings of the application</mat-card-content>
+          <mat-card-footer class="mat-mdc-card-footer d-flex align-items-end justify-content-end mt-2 mb-3 me-3">
+            <a mat-fab class="md-btn-sm me-3" color="primary" href="/advanced-settings">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+          </a>
+          </mat-card-footer>
+      </mat-card>
     </div>
-  </div>
 </div>
