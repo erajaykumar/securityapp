@@ -33,9 +33,8 @@ export class SignalrService {
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
-      var encodedMsg = ' Recived message:  ' + msg;
 
-      SignalrService.data.next(encodedMsg);
+      SignalrService.data.next(msg);
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +15,7 @@ import { SignalrService } from 'src/app/core/signalr.service';
   selector: 'app-toastr',
   templateUrl: './toastr.component.html',
   styleUrls: ['./toastr.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ToastrComponent {
   durationInSeconds = 5;
@@ -22,12 +23,8 @@ export class ToastrComponent {
     private _snackBar: MatSnackBar,
     private signalrservice: SignalrService
   ) {
-    // this._snackBar.open('hello', 'action', {
-    //   duration: this.durationInSeconds * 1000,
-    // });
-
     SignalrService.data.subscribe((data: any) => {
-      this._snackBar.open(data, 'action', {
+      this._snackBar.open(data, 'OK', {
         duration: this.durationInSeconds * 1000,
       });
     });
