@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/auth-service.component';
+import { SignalrService } from './core/signalr.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,10 @@ export class AppComponent {
 
   isLoggedIn = false;
 
-  constructor(private _authService: AuthService) {
+  constructor(
+    private _authService: AuthService,
+    private signalrservice: SignalrService
+  ) {
     this._authService.loginChanged.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
@@ -21,6 +25,10 @@ export class AppComponent {
     this._authService.isLoggedIn().then((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+
+    console.log(this.signalrservice.getMessage());
+
+   
   }
 
   login() {

@@ -22,6 +22,14 @@ import { AgGridModule } from 'ag-grid-angular';
 import { RuleComponent } from './rule/rule.component';
 import { ExistingRuleComponent } from './rule/existing-rule/existing-rule.component';
 import { authGuard } from './core/auth.guard';
+import { SignalrService } from './core/signalr.service';
+import { ToastrComponent } from './shared/toastr/toastr.component';
+import {
+  MatSnackBar,
+  MatSnackBarRef,
+  MatSnackBarModule,
+} from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +40,7 @@ import { authGuard } from './core/auth.guard';
     ContactusComponent,
     RuleComponent,
     ExistingRuleComponent,
+    ToastrComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +56,13 @@ import { authGuard } from './core/auth.guard';
     CoreModule,
     HttpClientModule,
     AgGridModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [SignalrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
