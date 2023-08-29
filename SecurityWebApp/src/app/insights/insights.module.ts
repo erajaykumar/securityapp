@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InsightDashboardComponent } from './insight-dashboard/insight-dashboard.component';
+import {MatCardModule} from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -9,7 +12,10 @@ import { InsightDashboardComponent } from './insight-dashboard/insight-dashboard
     InsightDashboardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class InsightsModule { }

@@ -28,6 +28,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import { InsightsModule } from './insights/insights.module';
+import { LoginComponent } from './login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -40,11 +44,15 @@ import {MatCardModule} from '@angular/material/card';
     ContactusComponent,
     RuleComponent,
     ExistingRuleComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
+    InsightsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
