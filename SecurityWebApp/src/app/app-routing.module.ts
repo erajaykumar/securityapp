@@ -16,22 +16,26 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signin-callback', component: SigninRedirectCallbackComponent },
   { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
-  { path: 'rule', component: RuleComponent },
+  { path: 'rule', component: RuleComponent, canActivate: [authGuard] },
   {
     path: 'insight-dashboard',
     component: InsightDashboardComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'advanced-settings',
     component: AdvancedSettingsHomeComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'admin-home',
     component: AdminHomeComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'notification-home',
     component: NotificationHomeComponent,
+    canActivate: [authGuard],
   },
   { path: 'unauthorized', component: UnauthorizedComponent },
 ];

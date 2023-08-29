@@ -1,38 +1,66 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button>
+    <a mat-button routerLink="/"
+      ><mat-icon style="transform: scale(2)">fingerprint</mat-icon>
+      <h1>Security App</h1></a
+    >
+    <!-- <button mat-icon-button>
       <mat-icon>fingerprint</mat-icon>
     </button>
-    <h1>Security App</h1>
-    <span class="menu-spacer"></span>
+    <h1>Security App</h1> -->
+    <!-- <span class="menu-spacer"></span> -->
     <div class="web-links">
-      <a mat-button routerLink="/insight-dashboard">Insights</a>
-      <a mat-button routerLink="/rule">Rules</a>
-      <a mat-button routerLink="/notification-home">Notications</a>
-      <a mat-button routerLink="/advanced-settings">Advanced Settings</a>
-      <a mat-button routerLink="/admin-home">Admin</a>
-      <a mat-button (click)="login()"> Login </a>
-      <a mat-button (click)="logout()"> Logout </a>
+      <a mat-button routerLink="/insight-dashboard" *ngIf="isLoggedIn"
+        >Insights</a
+      >
+      <a mat-button routerLink="/rule" *ngIf="isLoggedIn">Rules</a>
+      <a mat-button routerLink="/notification-home" *ngIf="isLoggedIn"
+        >Notications</a
+      >
+      <a mat-button routerLink="/advanced-settings" *ngIf="isLoggedIn"
+        >Advanced Settings</a
+      >
+      <a mat-button routerLink="/admin-home" *ngIf="isLoggedIn">Admin</a>
+      <span class="menu-spacer"></span>
+
+      <a mat-button (click)="login()" *ngIf="!isLoggedIn" type="button">
+        Login
+      </a>
+
+      <a mat-button (click)="logout()" *ngIf="isLoggedIn"> Logout </a>
     </div>
 
-    <button mat-icon-button (click)="expandMobileMenu()" class="mobile-menu-collapse" >
+    <button
+      mat-icon-button
+      (click)="expandMobileMenu()"
+      class="mobile-menu-collapse"
+    >
       <mat-icon>menu</mat-icon>
     </button>
   </mat-toolbar-row>
   <mat-toolbar-row [hidden]="!panelOpenState" class="mobile-menu">
-    <mat-expansion-panel  class="mobile-navigation" hideToggle [expanded]="panelOpenState">
+    <mat-expansion-panel
+      class="mobile-navigation"
+      hideToggle
+      [expanded]="panelOpenState"
+    >
       <div class="mobile-menu-items">
-        <a mat-button routerLink="/insight-dashboard">Insights</a>
-        <a mat-button routerLink="/rule">Rules</a>
-        <a mat-button routerLink="/notification-home">Notications</a>
-        <a mat-button routerLink="/advanced-settings">Advanced Settings</a>
-        <a mat-button routerLink="/admin-home">Admin</a>
-        <a mat-button routerLink="/login"> Login </a>
-        <!-- <a mat-button routerLink="/logout"> Logout </a> -->
+        <a mat-button routerLink="/insight-dashboard" *ngIf="isLoggedIn"
+          >Insights</a
+        >
+        <a mat-button routerLink="/rule" *ngIf="isLoggedIn">Rules</a>
+        <a mat-button routerLink="/notification-home" *ngIf="isLoggedIn"
+          >Notications</a
+        >
+        <a mat-button routerLink="/advanced-settings" *ngIf="isLoggedIn"
+          >Advanced Settings</a
+        >
+        <a mat-button routerLink="/admin-home" *ngIf="isLoggedIn">Admin</a>
+        <a mat-button routerLink="/login" *ngIf="!isLoggedIn"> Login </a>
+        <a mat-button routerLink="/logout" *ngIf="isLoggedIn"> Logout </a>
       </div>
     </mat-expansion-panel>
   </mat-toolbar-row>
-  
 </mat-toolbar>
 <main class="container container-fluid">
   <router-outlet></router-outlet>
