@@ -76,7 +76,7 @@ import {
     MatListModule,
     MatCardModule
   ],
-  providers: [SignalrService],
+  providers: [SignalrService, MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
