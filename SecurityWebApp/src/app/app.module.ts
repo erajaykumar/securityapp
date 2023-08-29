@@ -31,8 +31,13 @@ import {MatCardModule} from '@angular/material/card';
 import { InsightsModule } from './insights/insights.module';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-
+import { SignalrService } from './core/signalr.service';
+import { ToastrComponent } from './shared/toastr/toastr.component';
+import {
+  MatSnackBar,
+  MatSnackBarRef,
+  MatSnackBarModule,
+} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -45,6 +50,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RuleComponent,
     ExistingRuleComponent,
     LoginComponent,
+    ToastrComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatListModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [SignalrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/auth-service.component';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs';
-
+import { SignalrService } from './core/signalr.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +13,10 @@ export class AppComponent {
   panelOpenState = false;
   isLoggedIn = false;
 
-  constructor(private _authService: AuthService, private breakpointObserver:BreakpointObserver) {
+  constructor(
+    private _authService: AuthService,
+    private signalrservice: SignalrService
+  ) {
     this._authService.loginChanged.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
@@ -27,6 +29,10 @@ export class AppComponent {
     this._authService.isLoggedIn().then((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+
+    console.log(this.signalrservice.getMessage());
+
+   
   }
 
   expandMobileMenu(){
