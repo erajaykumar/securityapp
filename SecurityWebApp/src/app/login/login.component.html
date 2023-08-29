@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+      <div class="login-wrapper d-flex justify-content-center align-items-center">
+        <mat-card>
+            <div class="col-md-12">
+                <h2 class="text-center">Login</h2>
+            </div>
+          <mat-card-content>
+            <form>
+              <div class="col-md-12">
+                <mat-form-field>
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>mail</mat-icon>
+                      </button>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input [formControl]="password" matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-12 d-flex justify-content-end">
+                <a href="">
+                    Forgot Password
+                </a>
+              </div>
+              <mat-card-footer class="">
+                <div class="col-md-12 d-flex justify-content-center mt-2 mb-2">
+                    <button mat-raised-button color="primary">Login</button>
+                </div>
+                <div class="col-md-12 mt-3 d-flex justify-content-center">
+                    <p>Dont have an account ? <a href="">Signup</a></p>
+                </div>
+              </mat-card-footer>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

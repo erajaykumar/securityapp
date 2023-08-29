@@ -22,6 +22,15 @@ import { AgGridModule } from 'ag-grid-angular';
 import { RuleComponent } from './rule/rule.component';
 import { ExistingRuleComponent } from './rule/existing-rule/existing-rule.component';
 import { authGuard } from './core/auth.guard';
+import { RouterModule } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import { InsightsModule } from './insights/insights.module';
+import { LoginComponent } from './login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignalrService } from './core/signalr.service';
 import { ToastrComponent } from './shared/toastr/toastr.component';
 import {
@@ -29,7 +38,7 @@ import {
   MatSnackBarRef,
   MatSnackBarModule,
 } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,11 +49,16 @@ import { FormsModule } from '@angular/forms';
     ContactusComponent,
     RuleComponent,
     ExistingRuleComponent,
+    LoginComponent,
     ToastrComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
+    InsightsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -56,13 +70,13 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     HttpClientModule,
     AgGridModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule
   ],
-  providers: [SignalrService],
+  providers: [SignalrService, MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

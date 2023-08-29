@@ -1,0 +1,6 @@
+.login-wrapper{
+    height: calc(100vh - 70px);
+}
+.login-wrapper .mat-mdc-card{
+    padding: 33px;
+}

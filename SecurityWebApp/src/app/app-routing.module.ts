@@ -10,8 +10,10 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { NotificationHomeComponent } from './notification/notification-home/notification-home.component';
 import { RuleComponent } from './rule/rule.component';
 import { authGuard } from './core/auth.guard';
+import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'signin-callback', component: SigninRedirectCallbackComponent },
   { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
   { path: 'rule', component: RuleComponent, canActivate: [authGuard] },

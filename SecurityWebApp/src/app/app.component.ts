@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/auth-service.component';
+import { map } from 'rxjs';
 import { SignalrService } from './core/signalr.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SignalrService } from './core/signalr.service';
 })
 export class AppComponent {
   title = 'Security App';
-
+  panelOpenState = false;
   isLoggedIn = false;
 
   constructor(
@@ -19,7 +20,10 @@ export class AppComponent {
     this._authService.loginChanged.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+
   }
+
+ 
 
   ngOnInit(): void {
     this._authService.isLoggedIn().then((loggedIn) => {
@@ -29,6 +33,11 @@ export class AppComponent {
     console.log(this.signalrservice.getMessage());
 
    
+  }
+
+  expandMobileMenu(){
+    console.log('dfdfd');
+    this.panelOpenState = !this.panelOpenState;
   }
 
   login() {
