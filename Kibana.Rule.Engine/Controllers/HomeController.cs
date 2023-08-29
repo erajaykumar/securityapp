@@ -22,15 +22,15 @@ namespace Rule.Engine.Kibana.Controllers
         
         public async Task<IActionResult> Index()
         {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", accessToken);
-            string url = "https://localhost:7250" + "/WeatherForecast";
-            string json = await client.GetStringAsync(url);
+            //var accessToken = await HttpContext.GetTokenAsync("access_token");
+            //HttpClient client = new HttpClient();
+            //client.DefaultRequestHeaders.Add("Authorization", accessToken);
+            //string url = "https://localhost:7250" + "/WeatherForecast";
+            //string json = await client.GetStringAsync(url);
 
-            // Url = "https://localhost:7250" + "/api/WeatherForecast",
+            //// Url = "https://localhost:7250" + "/api/WeatherForecast",
 
-            //LogToken();
+            ////LogToken();
             return View();
             
         }

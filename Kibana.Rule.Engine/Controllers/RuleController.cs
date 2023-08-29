@@ -1,5 +1,7 @@
 ﻿using Kibana.Rule.Engine.Models;
 using Kibana.Rule.Engine.Models.RequestDto;
+using log4net.Config;
+using log4net;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,26 +11,30 @@ using Nest;
 using Rule.Engine.Kibana;
 using System.Data;
 using System.Diagnostics;
+using System.Reflection;
 using System.Text;
-
+using log4net;
 namespace Kibana.Rule.Engine.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public  class RuleController : Controller
     {
         private readonly IElasticClient _elasticClient;
         private readonly IWebHostEnvironment _hostingEnvironment;
       
         private readonly IDataAccessProvider _dataAccessProvider;
-        
+       
+
         public RuleController(IDataAccessProvider dataAccessProvider, IElasticClient elasticClient, IWebHostEnvironment hostingEnvironment)
         {
             _dataAccessProvider = dataAccessProvider;
             _elasticClient = elasticClient;
             _hostingEnvironment = hostingEnvironment;
-
         }
-      
+         
+         
+        
+       
         public IActionResult Index()
         {
             LogToken();
@@ -47,6 +53,8 @@ namespace Kibana.Rule.Engine.Controllers
         [HttpGet]        
         public ActionResult Create()
         {
+            //var demo = LogMethod();
+            //demo.Debug("create started");
 
             var number = new List<SelectListItem>()
             {
@@ -87,6 +95,11 @@ namespace Kibana.Rule.Engine.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Rules model)
         {
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4netconfig.config"));
+            var demo = new LogUtility.Logger();
+            demo.Info("rule creation started");
+            
             var number = new List<SelectListItem>()
             {
                 new SelectListItem{Text="1",Value="1"},
@@ -138,6 +151,7 @@ namespace Kibana.Rule.Engine.Controllers
             {               
                 _dataAccessProvider.CreateRules(rules);
                await CreateRuleAsync(rules);
+                demo.Info("rule created in db with id" + id);
                 return RedirectToAction(nameof(Index));
             }
             return View();
