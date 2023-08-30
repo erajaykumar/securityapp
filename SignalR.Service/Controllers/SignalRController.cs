@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using SignalR.Service.Hubs;
+using System.Runtime.CompilerServices;
 
 namespace SignalR.Service.Controllers
 {
@@ -8,19 +10,27 @@ namespace SignalR.Service.Controllers
     public class SignalRController : Controller
     {
         private readonly IHubContext<NotificationHub> _hubContext;
-
-        public SignalRController(IHubContext<NotificationHub> hubcontext)
-        {
+        AdminHub adminHub;
+        public SignalRController( AdminHub adminHub, IHubContext<NotificationHub> hubcontext)
+        {            
+                  
+            this.adminHub = adminHub;
             _hubContext = hubcontext;
         }
 
 
-        [HttpPost("{message}")]
-        public void Post(string message)
-        {
-            _hubContext.Clients.All.SendAsync("publicMessageMethodName", message);
-        }
+        //[HttpPost("{message}")]
+        //public void Post(string message)
+        //{
+        //    _hubContext.Clients.All.SendAsync("publicMessageMethodName", message);
+        //}
 
+        [HttpPost("{msg}")]
+        public async void PostMessage(string msg)
+        {
+            await adminHub.SendJobStatus(msg);
+           
+        }
         /// <summary>
         /// Send message to specific client
         /// </summary>

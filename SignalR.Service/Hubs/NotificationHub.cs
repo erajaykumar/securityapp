@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SignalR.Service
+namespace SignalR.Service.Hubs
 {
     public class NotificationHub : Hub
     {

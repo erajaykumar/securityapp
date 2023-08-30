@@ -1,8 +1,9 @@
-using SignalR.Service;
+using SignalR.Service.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<AdminHub>();
 builder.Services.AddSignalR();
 builder.Services.AddCors(options => {
     options.AddPolicy("CORSPolicy", 
@@ -24,7 +25,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CORSPolicy");
 app.UseRouting();
 app.UseAuthorization();
-app.MapHub<NotificationHub>("notificationHub");
+app.MapHub<AdminHub>("adminhub");
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
